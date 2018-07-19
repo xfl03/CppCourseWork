@@ -32,7 +32,12 @@ ViewCommand ManaView::OnInput(int input) {
             StringUtil::Pause();
             Display();
             return ViewCommand(1);
-        case 4://撤销账户
+        case 4://查询余额
+            cout << (con->Interest().message) << endl;
+            StringUtil::Pause();
+            Display();
+            return ViewCommand(1);
+        case 5://撤销账户
             cout << (con->Delete().message) << endl;
             StringUtil::Pause();
             return ViewCommand(3);
@@ -50,7 +55,8 @@ void ManaView::Display() {
     cout << "===1.查询余额====" << endl;
     cout << "===2.取款========" << endl;
     cout << "===3.存款========" << endl;
-    cout << "===4.撤销账户====" << endl;
+    cout << "===4.查看利息====" << endl;
+    cout << "===5.撤销账户====" << endl;
     cout << "===0.退出账户====" << endl;
     cout << "=================" << endl;
     cout << "请输入您选择的项目：";
