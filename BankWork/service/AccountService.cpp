@@ -77,11 +77,12 @@ bool AccountService::JudgeIDcard(string idcard) {
         return false;
 
     int checknum = idcard[17] == 'X' ? 10 : idcard[17] - '0';//输入身份证的校验码
+    checknum = (12 - checknum) % 11;
     int calchecknum = 0;//计算出的校验码
     int plex[] = {7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
     for (int i = 0; i < 17; i++)
         calchecknum += (idcard[i] - '0') * plex[i];//根据规则计算校验码
-    checknum %= 11;
+    calchecknum %= 11;
     return checknum == calchecknum;//校验码是否正确
 }
 
